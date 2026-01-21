@@ -309,6 +309,14 @@
             font-size: 1.1rem;
         }
 
+        .flag-icon {
+            width: 22px;
+            height: 22px;
+            border-radius: 50%;
+            object-fit: cover;
+            flex-shrink: 0;
+        }
+
         /* Cards */
         .card {
             background: var(--bg-card);
@@ -1106,34 +1114,37 @@
             <div class="lang-selector">
                 <div class="lang-dropdown" id="lang-dropdown">
                     <button class="lang-dropdown-btn" onclick="toggleLangDropdown()">
-                        <span class="lang-flag" id="current-lang-flag">🇬🇧</span>
+                        <img class="flag-icon" id="current-lang-flag" src="/flags/gb.svg" alt="">
                         <span id="current-lang-name">English</span>
                         <span class="lang-arrow">▼</span>
                     </button>
                     <div class="lang-dropdown-menu">
                         <button class="lang-option active" data-lang="en" onclick="setLanguage('en')">
-                            <span class="lang-flag">🇬🇧</span> English
+                            <img class="flag-icon" src="/flags/gb.svg" alt=""> English
                         </button>
                         <button class="lang-option" data-lang="es" onclick="setLanguage('es')">
-                            <span class="lang-flag">🇪🇸</span> Español
+                            <img class="flag-icon" src="/flags/es.svg" alt=""> Español
                         </button>
                         <button class="lang-option" data-lang="fr" onclick="setLanguage('fr')">
-                            <span class="lang-flag">🇫🇷</span> Français
+                            <img class="flag-icon" src="/flags/fr.svg" alt=""> Français
                         </button>
-                        <button class="lang-option" data-lang="pt" onclick="setLanguage('pt')">
-                            <span class="lang-flag">🇧🇷</span> Português
+                        <button class="lang-option" data-lang="pt-BR" onclick="setLanguage('pt-BR')">
+                            <img class="flag-icon" src="/flags/br.svg" alt=""> Português (BR)
+                        </button>
+                        <button class="lang-option" data-lang="pt-PT" onclick="setLanguage('pt-PT')">
+                            <img class="flag-icon" src="/flags/pt.svg" alt=""> Português (PT)
                         </button>
                         <button class="lang-option" data-lang="nb" onclick="setLanguage('nb')">
-                            <span class="lang-flag">🇳🇴</span> Norsk Bokmål
+                            <img class="flag-icon" src="/flags/no.svg" alt=""> Norsk Bokmål
                         </button>
                         <button class="lang-option" data-lang="nn" onclick="setLanguage('nn')">
-                            <span class="lang-flag">🇳🇴</span> Norsk Nynorsk
+                            <img class="flag-icon" src="/flags/no.svg" alt=""> Norsk Nynorsk
                         </button>
                         <button class="lang-option" data-lang="sv" onclick="setLanguage('sv')">
-                            <span class="lang-flag">🇸🇪</span> Svenska
+                            <img class="flag-icon" src="/flags/se.svg" alt=""> Svenska
                         </button>
                         <button class="lang-option" data-lang="da" onclick="setLanguage('da')">
-                            <span class="lang-flag">🇩🇰</span> Dansk
+                            <img class="flag-icon" src="/flags/dk.svg" alt=""> Dansk
                         </button>
                     </div>
                 </div>
@@ -1646,7 +1657,7 @@
                 categoryHint: "Indice de catégorie :",
                 theSecretWord: "Le mot secret est"
             },
-            pt: {
+            'pt-BR': {
                 tagline: "Não confie em ninguém",
                 howToPlay: "Como jogar",
                 step1: 'Todos recebem uma palavra secreta — exceto um jogador que é o <strong style="color: var(--accent-red)">IMPOSTOR</strong>',
@@ -1715,6 +1726,77 @@
                 impostor: "IMPOSTOR!",
                 blendIn: "Disfarce-se sem saber a palavra",
                 categoryHint: "Dica de categoria:",
+                theSecretWord: "A palavra secreta é"
+            },
+            'pt-PT': {
+                tagline: "Não confies em ninguém",
+                howToPlay: "Como jogar",
+                step1: 'Todos recebem uma palavra secreta — exceto um jogador que é o <strong style="color: var(--accent-red)">IMPOSTOR</strong>',
+                step2: "Cada um dá pistas de uma palavra sobre a palavra secreta",
+                step3: "O impostor tem de blefar — não sabe a palavra!",
+                step4: "Depois das pistas, votem em quem acham que é o impostor",
+                startGame: "Iniciar Jogo",
+                back: "Voltar",
+                gameSetup: "Configuração",
+                numberOfPlayers: "Número de Jogadores",
+                numberOfImpostors: "Número de Impostores",
+                impostorInfo: "Máx {max} impostor(es) para {players} jogadores",
+                category: "Categoria",
+                random: "Aleatório",
+                catFood: "Comida",
+                catAnimals: "Animais",
+                catMovies: "Filmes",
+                catSports: "Desportos",
+                catJobs: "Profissões",
+                catPlaces: "Locais",
+                catObjects: "Objetos",
+                catCountries: "Países",
+                catBrands: "Marcas",
+                catVehicles: "Veículos",
+                catClothing: "Roupa",
+                catMusic: "Música",
+                catRandom: "Aleatório",
+                catCustom: "Personalizado",
+                customCategoryName: "Nome da categoria (ex. Super-heróis)",
+                customWordsPlaceholder: "Escreve palavras separadas por vírgulas (ex. Batman, Superman, Spider-Man)",
+                customWordsHint: "Mínimo 3 palavras necessárias",
+                options: "Opções",
+                giveHint: "Dar pista ao impostor",
+                giveHintSub: "Mostra a categoria ao impostor",
+                continue: "Continuar",
+                playerNames: "Nomes dos Jogadores",
+                playerNamesDesc: "Escreve nomes ou deixa o padrão",
+                player: "Jogador",
+                passThePhone: "Passa o Telemóvel",
+                passThePhoneDesc: "Cada jogador toca no seu nome para ver a sua palavra em privado",
+                backToSetup: "Voltar à configuração",
+                everyoneSeen: "Todos viram a sua palavra →",
+                tapToReveal: "Toca no cartão para ver a tua palavra",
+                tapToRevealShort: "Toca para revelar",
+                hideAndPass: "Esconder e Passar",
+                rememberWord: "Lembra-te da tua palavra, depois passa o telemóvel",
+                timeToPlay: "Hora de Jogar!",
+                taketurns: "Cada um dá pistas de uma palavra",
+                theCategory: "A Categoria",
+                rulesReminder: "Lembrete das Regras",
+                rule1: 'Cada jogador diz <strong>uma palavra</strong> relacionada com a palavra secreta',
+                rule2: 'O impostor deve <strong style="color: var(--accent-red);">blefar</strong> — não sabe a palavra!',
+                rule3: 'Depois de todos falarem, <strong>discutam e votem</strong>',
+                startVoting: "Iniciar Votação",
+                revealResults: "Revelar Resultados",
+                whoIsImpostor: "Quem é o Impostor?",
+                discussAndVote: "Discutam e votem em quem acham que está a blefar",
+                revealImpostor: "Revelar o Impostor!",
+                gameOver: "Fim de Jogo!",
+                secretWordWas: "A palavra secreta era",
+                impostorWas: "O impostor era",
+                impostorsWere: "Os impostores eram",
+                playAgain: "Jogar Novamente",
+                backToHome: "Voltar ao Início",
+                youAreThe: "Tu és o",
+                impostor: "IMPOSTOR!",
+                blendIn: "Disfarça-te sem saber a palavra",
+                categoryHint: "Pista de categoria:",
                 theSecretWord: "A palavra secreta é"
             },
             nb: {
@@ -2047,7 +2129,7 @@
                 clothing: ['T-shirt', 'Jeans', 'Robe', 'Veste', 'Baskets', 'Chapeau', 'Écharpe', 'Gants', 'Chaussettes', 'Pull', 'Short', 'Jupe', 'Bottes', 'Sandales', 'Cravate', 'Ceinture', 'Manteau', 'Sweat', 'Pyjama', 'Maillot de bain'],
                 music: ['Guitare', 'Piano', 'Batterie', 'Violon', 'Saxophone', 'Trompette', 'Flûte', 'Rock', 'Jazz', 'Pop', 'Hip Hop', 'Classique', 'Reggae', 'Blues', 'Électronique', 'Country', 'Microphone', 'Concert', 'DJ', 'Orchestre']
             },
-            pt: {
+            'pt-BR': {
                 food: ['Pizza', 'Sushi', 'Hambúrguer', 'Massa', 'Taco', 'Chocolate', 'Sorvete', 'Panquecas', 'Bife', 'Salada', 'Sanduíche', 'Sopa', 'Curry', 'Ramen', 'Rosquinha', 'Biscoito', 'Pão', 'Queijo', 'Maçã', 'Banana', 'Laranja', 'Morango', 'Melancia', 'Café', 'Chá'],
                 animals: ['Cachorro', 'Gato', 'Elefante', 'Leão', 'Tigre', 'Pinguim', 'Golfinho', 'Águia', 'Tubarão', 'Macaco', 'Girafa', 'Zebra', 'Urso', 'Lobo', 'Raposa', 'Coelho', 'Cavalo', 'Vaca', 'Porco', 'Galinha', 'Pato', 'Coruja', 'Cobra', 'Tartaruga', 'Sapo'],
                 movies: ['Titanic', 'Avatar', 'Star Wars', 'Harry Potter', 'Frozen', 'Shrek', 'Batman', 'Homem-Aranha', 'Jurassic Park', 'O Rei Leão', 'Procurando Nemo', 'Toy Story', 'Matrix', 'Tubarão', 'Rocky', 'Gladiador', 'A Origem', 'Interestelar', 'Forrest Gump', 'Coringa'],
@@ -2060,6 +2142,20 @@
                 vehicles: ['Carro', 'Moto', 'Bicicleta', 'Ônibus', 'Trem', 'Avião', 'Helicóptero', 'Barco', 'Submarino', 'Caminhão', 'Táxi', 'Ambulância', 'Scooter', 'Skate', 'Foguete', 'Trator', 'Van', 'Canoa', 'Jet Ski', 'Balão'],
                 clothing: ['Camiseta', 'Jeans', 'Vestido', 'Jaqueta', 'Tênis', 'Chapéu', 'Cachecol', 'Luvas', 'Meias', 'Suéter', 'Shorts', 'Saia', 'Botas', 'Sandálias', 'Gravata', 'Cinto', 'Casaco', 'Moletom', 'Pijama', 'Maiô'],
                 music: ['Violão', 'Piano', 'Bateria', 'Violino', 'Saxofone', 'Trompete', 'Flauta', 'Rock', 'Jazz', 'Pop', 'Hip Hop', 'Clássica', 'Reggae', 'Blues', 'Eletrônica', 'Country', 'Microfone', 'Show', 'DJ', 'Orquestra']
+            },
+            'pt-PT': {
+                food: ['Pizza', 'Sushi', 'Hambúrguer', 'Massa', 'Taco', 'Chocolate', 'Gelado', 'Panquecas', 'Bife', 'Salada', 'Sandes', 'Sopa', 'Caril', 'Ramen', 'Donut', 'Bolacha', 'Pão', 'Queijo', 'Maçã', 'Banana', 'Laranja', 'Morango', 'Melancia', 'Café', 'Chá'],
+                animals: ['Cão', 'Gato', 'Elefante', 'Leão', 'Tigre', 'Pinguim', 'Golfinho', 'Águia', 'Tubarão', 'Macaco', 'Girafa', 'Zebra', 'Urso', 'Lobo', 'Raposa', 'Coelho', 'Cavalo', 'Vaca', 'Porco', 'Galinha', 'Pato', 'Coruja', 'Cobra', 'Tartaruga', 'Rã'],
+                movies: ['Titanic', 'Avatar', 'Star Wars', 'Harry Potter', 'Frozen', 'Shrek', 'Batman', 'Homem-Aranha', 'Jurassic Park', 'O Rei Leão', 'À Procura de Nemo', 'Toy Story', 'Matrix', 'Tubarão', 'Rocky', 'Gladiador', 'A Origem', 'Interstellar', 'Forrest Gump', 'Joker'],
+                sports: ['Futebol', 'Basquetebol', 'Ténis', 'Natação', 'Corrida', 'Golfe', 'Boxe', 'Hóquei', 'Basebol', 'Voleibol', 'Esqui', 'Surf', 'Ciclismo', 'Luta', 'Karaté', 'Yoga', 'Ginástica', 'Críquete', 'Râguebi', 'Bowling'],
+                jobs: ['Médico', 'Professor', 'Chefe de Cozinha', 'Piloto', 'Polícia', 'Bombeiro', 'Advogado', 'Engenheiro', 'Enfermeira', 'Artista', 'Músico', 'Ator', 'Agricultor', 'Cientista', 'Astronauta', 'Dentista', 'Mecânico', 'Barbeiro', 'Empregado de Mesa', 'Condutor'],
+                places: ['Praia', 'Montanha', 'Floresta', 'Deserto', 'Ilha', 'Cidade', 'Aldeia', 'Castelo', 'Museu', 'Biblioteca', 'Hospital', 'Aeroporto', 'Restaurante', 'Escola', 'Igreja', 'Estádio', 'Jardim Zoológico', 'Parque', 'Centro Comercial', 'Cinema'],
+                objects: ['Telemóvel', 'Computador', 'Televisão', 'Carro', 'Bicicleta', 'Cadeira', 'Mesa', 'Candeeiro', 'Espelho', 'Relógio', 'Câmara', 'Guitarra', 'Piano', 'Livro', 'Caneta', 'Guarda-chuva', 'Óculos', 'Chave', 'Carteira', 'Mala'],
+                countries: ['Japão', 'Brasil', 'França', 'Egito', 'Austrália', 'Canadá', 'México', 'Índia', 'Itália', 'Alemanha', 'China', 'Espanha', 'Argentina', 'Rússia', 'África do Sul', 'Tailândia', 'Grécia', 'Suécia', 'Marrocos', 'Peru'],
+                brands: ['Apple', 'Nike', 'Google', 'Amazon', 'McDonald\'s', 'Coca-Cola', 'Samsung', 'Toyota', 'Netflix', 'Adidas', 'Starbucks', 'Disney', 'IKEA', 'Lego', 'Sony', 'Microsoft', 'Ferrari', 'Rolex', 'Chanel', 'Gucci'],
+                vehicles: ['Carro', 'Mota', 'Bicicleta', 'Autocarro', 'Comboio', 'Avião', 'Helicóptero', 'Barco', 'Submarino', 'Camião', 'Táxi', 'Ambulância', 'Scooter', 'Skate', 'Foguetão', 'Trator', 'Carrinha', 'Canoa', 'Mota de Água', 'Balão de Ar Quente'],
+                clothing: ['T-shirt', 'Calças de Ganga', 'Vestido', 'Casaco', 'Ténis', 'Chapéu', 'Cachecol', 'Luvas', 'Meias', 'Camisola', 'Calções', 'Saia', 'Botas', 'Sandálias', 'Gravata', 'Cinto', 'Sobretudo', 'Sweatshirt', 'Pijama', 'Fato de Banho'],
+                music: ['Guitarra', 'Piano', 'Bateria', 'Violino', 'Saxofone', 'Trompete', 'Flauta', 'Rock', 'Jazz', 'Pop', 'Hip Hop', 'Clássica', 'Reggae', 'Blues', 'Eletrónica', 'Country', 'Microfone', 'Concerto', 'DJ', 'Orquestra']
             },
             nb: {
                 food: ['Pizza', 'Sushi', 'Hamburger', 'Pasta', 'Taco', 'Sjokolade', 'Iskrem', 'Pannekaker', 'Biff', 'Salat', 'Sandwich', 'Suppe', 'Curry', 'Ramen', 'Smultring', 'Kjeks', 'Brød', 'Ost', 'Eple', 'Banan', 'Appelsin', 'Jordbær', 'Vannmelon', 'Kaffe', 'Te'],
@@ -2123,7 +2219,8 @@
             en: { food: 'Food', animals: 'Animals', movies: 'Movies', sports: 'Sports', jobs: 'Jobs', places: 'Places', objects: 'Objects', countries: 'Countries', brands: 'Brands', vehicles: 'Vehicles', clothing: 'Clothing', music: 'Music' },
             es: { food: 'Comida', animals: 'Animales', movies: 'Películas', sports: 'Deportes', jobs: 'Trabajos', places: 'Lugares', objects: 'Objetos', countries: 'Países', brands: 'Marcas', vehicles: 'Vehículos', clothing: 'Ropa', music: 'Música' },
             fr: { food: 'Nourriture', animals: 'Animaux', movies: 'Films', sports: 'Sports', jobs: 'Métiers', places: 'Lieux', objects: 'Objets', countries: 'Pays', brands: 'Marques', vehicles: 'Véhicules', clothing: 'Vêtements', music: 'Musique' },
-            pt: { food: 'Comida', animals: 'Animais', movies: 'Filmes', sports: 'Esportes', jobs: 'Profissões', places: 'Lugares', objects: 'Objetos', countries: 'Países', brands: 'Marcas', vehicles: 'Veículos', clothing: 'Roupas', music: 'Música' },
+            'pt-BR': { food: 'Comida', animals: 'Animais', movies: 'Filmes', sports: 'Esportes', jobs: 'Profissões', places: 'Lugares', objects: 'Objetos', countries: 'Países', brands: 'Marcas', vehicles: 'Veículos', clothing: 'Roupas', music: 'Música' },
+            'pt-PT': { food: 'Comida', animals: 'Animais', movies: 'Filmes', sports: 'Desportos', jobs: 'Profissões', places: 'Locais', objects: 'Objetos', countries: 'Países', brands: 'Marcas', vehicles: 'Veículos', clothing: 'Roupa', music: 'Música' },
             nb: { food: 'Mat', animals: 'Dyr', movies: 'Filmer', sports: 'Sport', jobs: 'Yrker', places: 'Steder', objects: 'Gjenstander', countries: 'Land', brands: 'Merker', vehicles: 'Kjøretøy', clothing: 'Klær', music: 'Musikk' },
             nn: { food: 'Mat', animals: 'Dyr', movies: 'Filmar', sports: 'Sport', jobs: 'Yrke', places: 'Stader', objects: 'Gjenstandar', countries: 'Land', brands: 'Merke', vehicles: 'Køyretøy', clothing: 'Klede', music: 'Musikk' },
             sv: { food: 'Mat', animals: 'Djur', movies: 'Filmer', sports: 'Sport', jobs: 'Yrken', places: 'Platser', objects: 'Föremål', countries: 'Länder', brands: 'Varumärken', vehicles: 'Fordon', clothing: 'Kläder', music: 'Musik' },
@@ -2148,14 +2245,15 @@
 
         // Language data
         const langData = {
-            en: { flag: '🇬🇧', name: 'English' },
-            es: { flag: '🇪🇸', name: 'Español' },
-            fr: { flag: '🇫🇷', name: 'Français' },
-            pt: { flag: '🇧🇷', name: 'Português' },
-            nb: { flag: '🇳🇴', name: 'Norsk Bokmål' },
-            nn: { flag: '🇳🇴', name: 'Norsk Nynorsk' },
-            sv: { flag: '🇸🇪', name: 'Svenska' },
-            da: { flag: '🇩🇰', name: 'Dansk' }
+            en: { flag: '/flags/gb.svg', name: 'English' },
+            es: { flag: '/flags/es.svg', name: 'Español' },
+            fr: { flag: '/flags/fr.svg', name: 'Français' },
+            'pt-BR': { flag: '/flags/br.svg', name: 'Português (BR)' },
+            'pt-PT': { flag: '/flags/pt.svg', name: 'Português (PT)' },
+            nb: { flag: '/flags/no.svg', name: 'Norsk Bokmål' },
+            nn: { flag: '/flags/no.svg', name: 'Norsk Nynorsk' },
+            sv: { flag: '/flags/se.svg', name: 'Svenska' },
+            da: { flag: '/flags/dk.svg', name: 'Dansk' }
         };
 
         // Language functions
@@ -2167,7 +2265,7 @@
             currentLang = lang;
 
             // Update dropdown button
-            document.getElementById('current-lang-flag').textContent = langData[lang].flag;
+            document.getElementById('current-lang-flag').src = langData[lang].flag;
             document.getElementById('current-lang-name').textContent = langData[lang].name;
 
             // Update active state in dropdown
