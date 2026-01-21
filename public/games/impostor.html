@@ -259,6 +259,8 @@
             left: 50%;
             transform: translateX(-50%);
             min-width: 180px;
+            max-height: 280px;
+            overflow-y: auto;
             background: var(--bg-card-solid);
             border: 1px solid var(--border-medium);
             border-radius: 14px;
@@ -303,6 +305,31 @@
         .lang-option.active {
             background: rgba(255, 77, 106, 0.1);
             color: var(--accent-red);
+        }
+
+        .lang-search {
+            width: 100%;
+            padding: 10px 12px;
+            margin-bottom: 8px;
+            border: 1px solid var(--border-medium);
+            border-radius: 8px;
+            background: var(--bg-elevated);
+            color: var(--text-white);
+            font-family: 'Inter', sans-serif;
+            font-size: 0.85rem;
+            outline: none;
+        }
+
+        .lang-search:focus {
+            border-color: var(--accent-red);
+        }
+
+        .lang-search::placeholder {
+            color: var(--text-muted);
+        }
+
+        .lang-option.hidden {
+            display: none;
         }
 
         .lang-option .lang-flag {
@@ -1119,32 +1146,45 @@
                         <span class="lang-arrow">▼</span>
                     </button>
                     <div class="lang-dropdown-menu">
-                        <button class="lang-option active" data-lang="en" onclick="setLanguage('en')">
+                        <input type="text" class="lang-search" id="lang-search" placeholder="Search..." oninput="filterLanguages(this.value)" onclick="event.stopPropagation()">
+                        <button class="lang-option active" data-lang="en" data-search="english" onclick="setLanguage('en')">
                             <img class="flag-icon" src="/flags/gb.svg" alt=""> English
                         </button>
-                        <button class="lang-option" data-lang="es" onclick="setLanguage('es')">
+                        <button class="lang-option" data-lang="es" data-search="spanish espanol" onclick="setLanguage('es')">
                             <img class="flag-icon" src="/flags/es.svg" alt=""> Español
                         </button>
-                        <button class="lang-option" data-lang="fr" onclick="setLanguage('fr')">
+                        <button class="lang-option" data-lang="fr" data-search="french francais" onclick="setLanguage('fr')">
                             <img class="flag-icon" src="/flags/fr.svg" alt=""> Français
                         </button>
-                        <button class="lang-option" data-lang="pt-BR" onclick="setLanguage('pt-BR')">
+                        <button class="lang-option" data-lang="pt-BR" data-search="portuguese brazil brazilian portugues brasil" onclick="setLanguage('pt-BR')">
                             <img class="flag-icon" src="/flags/br.svg" alt=""> Português (BR)
                         </button>
-                        <button class="lang-option" data-lang="pt-PT" onclick="setLanguage('pt-PT')">
+                        <button class="lang-option" data-lang="pt-PT" data-search="portuguese portugal portugues" onclick="setLanguage('pt-PT')">
                             <img class="flag-icon" src="/flags/pt.svg" alt=""> Português (PT)
                         </button>
-                        <button class="lang-option" data-lang="nb" onclick="setLanguage('nb')">
+                        <button class="lang-option" data-lang="nb" data-search="norwegian bokmal norway norsk" onclick="setLanguage('nb')">
                             <img class="flag-icon" src="/flags/no.svg" alt=""> Norsk Bokmål
                         </button>
-                        <button class="lang-option" data-lang="nn" onclick="setLanguage('nn')">
-                            <img class="flag-icon" src="/flags/no.svg" alt=""> Norsk Nynorsk
+                        <button class="lang-option" data-lang="nn" data-search="norwegian nynorsk norway norsk" onclick="setLanguage('nn')">
+                            <img class="flag-icon" src="/flags/no.svg" alt=""> Nynorsk
                         </button>
-                        <button class="lang-option" data-lang="sv" onclick="setLanguage('sv')">
+                        <button class="lang-option" data-lang="sv" data-search="swedish sweden svenska" onclick="setLanguage('sv')">
                             <img class="flag-icon" src="/flags/se.svg" alt=""> Svenska
                         </button>
-                        <button class="lang-option" data-lang="da" onclick="setLanguage('da')">
+                        <button class="lang-option" data-lang="da" data-search="danish denmark dansk" onclick="setLanguage('da')">
                             <img class="flag-icon" src="/flags/dk.svg" alt=""> Dansk
+                        </button>
+                        <button class="lang-option" data-lang="pl" data-search="polish poland polski" onclick="setLanguage('pl')">
+                            <img class="flag-icon" src="/flags/pl.svg" alt=""> Polski
+                        </button>
+                        <button class="lang-option" data-lang="it" data-search="italian italy italiano" onclick="setLanguage('it')">
+                            <img class="flag-icon" src="/flags/it.svg" alt=""> Italiano
+                        </button>
+                        <button class="lang-option" data-lang="zh" data-search="chinese mandarin china zhongwen" onclick="setLanguage('zh')">
+                            <img class="flag-icon" src="/flags/cn.svg" alt=""> 中文
+                        </button>
+                        <button class="lang-option" data-lang="ru" data-search="russian russia russkiy" onclick="setLanguage('ru')">
+                            <img class="flag-icon" src="/flags/ru.svg" alt=""> Русский
                         </button>
                     </div>
                 </div>
@@ -2082,6 +2122,290 @@
                 blendIn: "Bland dig ind uden at kende ordet",
                 categoryHint: "Kategorihint:",
                 theSecretWord: "Det hemmelige ord er"
+            },
+            pl: {
+                tagline: "Nie ufaj nikomu",
+                howToPlay: "Jak grać",
+                step1: 'Każdy dostaje tajne słowo — oprócz jednego gracza, który jest <strong style="color: var(--accent-red)">IMPOSTOREM</strong>',
+                step2: "Na zmianę dawajcie jednowyrazowe wskazówki o tajnym słowie",
+                step3: "Impostor musi blefować — nie zna słowa!",
+                step4: "Po wskazówkach głosujcie, kto waszym zdaniem jest impostorem",
+                startGame: "Rozpocznij Grę",
+                back: "Wstecz",
+                gameSetup: "Ustawienia Gry",
+                numberOfPlayers: "Liczba Graczy",
+                numberOfImpostors: "Liczba Impostorów",
+                impostorInfo: "Maks {max} impostor(ów) dla {players} graczy",
+                category: "Kategoria",
+                random: "Losowa",
+                catFood: "Jedzenie",
+                catAnimals: "Zwierzęta",
+                catMovies: "Filmy",
+                catSports: "Sport",
+                catJobs: "Zawody",
+                catPlaces: "Miejsca",
+                catObjects: "Przedmioty",
+                catCountries: "Kraje",
+                catBrands: "Marki",
+                catVehicles: "Pojazdy",
+                catClothing: "Ubrania",
+                catMusic: "Muzyka",
+                catRandom: "Losowa",
+                catCustom: "Własna",
+                customCategoryName: "Nazwa kategorii (np. Superbohaterowie)",
+                customWordsPlaceholder: "Wpisz słowa oddzielone przecinkami (np. Batman, Superman, Spider-Man)",
+                customWordsHint: "Wymagane minimum 3 słowa",
+                options: "Opcje",
+                giveHint: "Daj impostorowi wskazówkę",
+                giveHintSub: "Pokazuje kategorię impostorowi",
+                continue: "Kontynuuj",
+                playerNames: "Imiona Graczy",
+                playerNamesDesc: "Wpisz imiona lub zostaw domyślne",
+                player: "Gracz",
+                passThePhone: "Podaj Telefon",
+                passThePhoneDesc: "Każdy gracz klika swoje imię, żeby zobaczyć swoje słowo prywatnie",
+                backToSetup: "Wróć do ustawień",
+                everyoneSeen: "Wszyscy widzieli swoje słowa →",
+                tapToReveal: "Dotknij kartę, żeby zobaczyć słowo",
+                tapToRevealShort: "Dotknij, żeby odsłonić",
+                hideAndPass: "Ukryj i Podaj Dalej",
+                rememberWord: "Zapamiętaj słowo, potem podaj telefon",
+                timeToPlay: "Czas Grać!",
+                taketurns: "Na zmianę dawajcie jednowyrazowe wskazówki",
+                theCategory: "Kategoria to",
+                rulesReminder: "Przypomnienie Zasad",
+                rule1: 'Każdy gracz mówi <strong>jedno słowo</strong> związane z tajnym słowem',
+                rule2: 'Impostor musi <strong style="color: var(--accent-red);">blefować</strong> — nie zna słowa!',
+                rule3: 'Po tym jak wszyscy powiedzą, <strong>dyskutujcie i głosujcie</strong>',
+                startVoting: "Rozpocznij Głosowanie",
+                revealResults: "Pokaż Wyniki",
+                whoIsImpostor: "Kto jest Impostorem?",
+                discussAndVote: "Dyskutujcie i głosujcie, kto waszym zdaniem blefuje",
+                revealImpostor: "Ujawnij Impostora!",
+                gameOver: "Koniec Gry!",
+                secretWordWas: "Tajne słowo to",
+                impostorWas: "Impostorem był/a",
+                impostorsWere: "Impostorami byli",
+                playAgain: "Zagraj Ponownie",
+                backToHome: "Powrót do Menu",
+                youAreThe: "Jesteś",
+                impostor: "IMPOSTOREM!",
+                blendIn: "Wtop się, nie znając słowa",
+                categoryHint: "Wskazówka kategorii:",
+                theSecretWord: "Tajne słowo to"
+            },
+            it: {
+                tagline: "Non fidarti di nessuno",
+                howToPlay: "Come giocare",
+                step1: 'Tutti ricevono una parola segreta — tranne un giocatore che è l\'<strong style="color: var(--accent-red)">IMPOSTORE</strong>',
+                step2: "A turno date indizi di una parola sulla parola segreta",
+                step3: "L'impostore deve bluffare — non conosce la parola!",
+                step4: "Dopo gli indizi, votate chi pensate sia l'impostore",
+                startGame: "Inizia Partita",
+                back: "Indietro",
+                gameSetup: "Impostazioni",
+                numberOfPlayers: "Numero di Giocatori",
+                numberOfImpostors: "Numero di Impostori",
+                impostorInfo: "Max {max} impostore/i per {players} giocatori",
+                category: "Categoria",
+                random: "Casuale",
+                catFood: "Cibo",
+                catAnimals: "Animali",
+                catMovies: "Film",
+                catSports: "Sport",
+                catJobs: "Lavori",
+                catPlaces: "Luoghi",
+                catObjects: "Oggetti",
+                catCountries: "Paesi",
+                catBrands: "Marchi",
+                catVehicles: "Veicoli",
+                catClothing: "Abbigliamento",
+                catMusic: "Musica",
+                catRandom: "Casuale",
+                catCustom: "Personalizzata",
+                customCategoryName: "Nome categoria (es. Supereroi)",
+                customWordsPlaceholder: "Inserisci parole separate da virgole (es. Batman, Superman, Spider-Man)",
+                customWordsHint: "Minimo 3 parole richieste",
+                options: "Opzioni",
+                giveHint: "Dai un indizio all'impostore",
+                giveHintSub: "Mostra la categoria all'impostore",
+                continue: "Continua",
+                playerNames: "Nomi Giocatori",
+                playerNamesDesc: "Inserisci i nomi o mantieni quelli predefiniti",
+                player: "Giocatore",
+                passThePhone: "Passa il Telefono",
+                passThePhoneDesc: "Ogni giocatore tocca il proprio nome per vedere la propria parola in privato",
+                backToSetup: "Torna alle impostazioni",
+                everyoneSeen: "Tutti hanno visto le loro parole →",
+                tapToReveal: "Tocca la carta per vedere la tua parola",
+                tapToRevealShort: "Tocca per rivelare",
+                hideAndPass: "Nascondi e Passa",
+                rememberWord: "Ricorda la tua parola, poi passa il telefono",
+                timeToPlay: "È Ora di Giocare!",
+                taketurns: "A turno date indizi di una parola",
+                theCategory: "La categoria è",
+                rulesReminder: "Promemoria Regole",
+                rule1: 'Ogni giocatore dice <strong>una parola</strong> collegata alla parola segreta',
+                rule2: 'L\'impostore deve <strong style="color: var(--accent-red);">bluffare</strong> — non conosce la parola!',
+                rule3: 'Dopo che tutti hanno parlato, <strong>discutete e votate</strong>',
+                startVoting: "Inizia Votazione",
+                revealResults: "Mostra Risultati",
+                whoIsImpostor: "Chi è l'Impostore?",
+                discussAndVote: "Discutete e votate chi pensate stia bluffando",
+                revealImpostor: "Rivela l'Impostore!",
+                gameOver: "Partita Finita!",
+                secretWordWas: "La parola segreta era",
+                impostorWas: "L'impostore era",
+                impostorsWere: "Gli impostori erano",
+                playAgain: "Gioca Ancora",
+                backToHome: "Torna al Menu",
+                youAreThe: "Sei",
+                impostor: "L'IMPOSTORE!",
+                blendIn: "Mimetizzati senza conoscere la parola",
+                categoryHint: "Indizio categoria:",
+                theSecretWord: "La parola segreta è"
+            },
+            zh: {
+                tagline: "不要相信任何人",
+                howToPlay: "游戏规则",
+                step1: '每个人都会得到一个秘密词——除了一个是<strong style="color: var(--accent-red)">卧底</strong>的玩家',
+                step2: "轮流给出关于秘密词的一词提示",
+                step3: "卧底必须假装——他们不知道那个词！",
+                step4: "提示结束后，投票选出你认为是卧底的人",
+                startGame: "开始游戏",
+                back: "返回",
+                gameSetup: "游戏设置",
+                numberOfPlayers: "玩家人数",
+                numberOfImpostors: "卧底人数",
+                impostorInfo: "{players}名玩家最多{max}名卧底",
+                category: "类别",
+                random: "随机",
+                catFood: "食物",
+                catAnimals: "动物",
+                catMovies: "电影",
+                catSports: "运动",
+                catJobs: "职业",
+                catPlaces: "地点",
+                catObjects: "物品",
+                catCountries: "国家",
+                catBrands: "品牌",
+                catVehicles: "交通工具",
+                catClothing: "服装",
+                catMusic: "音乐",
+                catRandom: "随机",
+                catCustom: "自定义",
+                customCategoryName: "类别名称（例如：超级英雄）",
+                customWordsPlaceholder: "输入用逗号分隔的词（例如：蝙蝠侠、超人、蜘蛛侠）",
+                customWordsHint: "至少需要3个词",
+                options: "选项",
+                giveHint: "给卧底一个提示",
+                giveHintSub: "向卧底显示类别",
+                continue: "继续",
+                playerNames: "玩家名称",
+                playerNamesDesc: "输入名称或保持默认",
+                player: "玩家",
+                passThePhone: "传递手机",
+                passThePhoneDesc: "每个玩家点击自己的名字私下查看自己的词",
+                backToSetup: "返回设置",
+                everyoneSeen: "所有人都看过自己的词了 →",
+                tapToReveal: "点击卡片查看你的词",
+                tapToRevealShort: "点击揭示",
+                hideAndPass: "隐藏并传递",
+                rememberWord: "记住你的词，然后传递手机",
+                timeToPlay: "开始游戏！",
+                taketurns: "轮流给出一词提示",
+                theCategory: "类别是",
+                rulesReminder: "规则提醒",
+                rule1: '每个玩家说<strong>一个词</strong>与秘密词相关',
+                rule2: '卧底必须<strong style="color: var(--accent-red);">假装</strong>——他们不知道那个词！',
+                rule3: '所有人说完后，<strong>讨论并投票</strong>',
+                startVoting: "开始投票",
+                revealResults: "显示结果",
+                whoIsImpostor: "谁是卧底？",
+                discussAndVote: "讨论并投票选出你认为在假装的人",
+                revealImpostor: "揭示卧底！",
+                gameOver: "游戏结束！",
+                secretWordWas: "秘密词是",
+                impostorWas: "卧底是",
+                impostorsWere: "卧底们是",
+                playAgain: "再玩一次",
+                backToHome: "返回主页",
+                youAreThe: "你是",
+                impostor: "卧底！",
+                blendIn: "不知道词也要融入其中",
+                categoryHint: "类别提示：",
+                theSecretWord: "秘密词是"
+            },
+            ru: {
+                tagline: "Не доверяй никому",
+                howToPlay: "Как играть",
+                step1: 'Все получают секретное слово — кроме одного игрока, который является <strong style="color: var(--accent-red)">САМОЗВАНЦЕМ</strong>',
+                step2: "По очереди давайте подсказки из одного слова о секретном слове",
+                step3: "Самозванец должен блефовать — он не знает слова!",
+                step4: "После подсказок голосуйте за того, кто по-вашему самозванец",
+                startGame: "Начать Игру",
+                back: "Назад",
+                gameSetup: "Настройки Игры",
+                numberOfPlayers: "Количество Игроков",
+                numberOfImpostors: "Количество Самозванцев",
+                impostorInfo: "Макс {max} самозванец(ев) для {players} игроков",
+                category: "Категория",
+                random: "Случайная",
+                catFood: "Еда",
+                catAnimals: "Животные",
+                catMovies: "Фильмы",
+                catSports: "Спорт",
+                catJobs: "Профессии",
+                catPlaces: "Места",
+                catObjects: "Предметы",
+                catCountries: "Страны",
+                catBrands: "Бренды",
+                catVehicles: "Транспорт",
+                catClothing: "Одежда",
+                catMusic: "Музыка",
+                catRandom: "Случайная",
+                catCustom: "Своя",
+                customCategoryName: "Название категории (напр. Супергерои)",
+                customWordsPlaceholder: "Введите слова через запятую (напр. Бэтмен, Супермен, Человек-паук)",
+                customWordsHint: "Минимум 3 слова",
+                options: "Опции",
+                giveHint: "Дать подсказку самозванцу",
+                giveHintSub: "Показывает категорию самозванцу",
+                continue: "Продолжить",
+                playerNames: "Имена Игроков",
+                playerNamesDesc: "Введите имена или оставьте по умолчанию",
+                player: "Игрок",
+                passThePhone: "Передай Телефон",
+                passThePhoneDesc: "Каждый игрок нажимает на своё имя, чтобы увидеть своё слово приватно",
+                backToSetup: "Вернуться к настройкам",
+                everyoneSeen: "Все увидели свои слова →",
+                tapToReveal: "Нажми на карточку, чтобы увидеть слово",
+                tapToRevealShort: "Нажми чтобы открыть",
+                hideAndPass: "Скрыть и Передать",
+                rememberWord: "Запомни своё слово, затем передай телефон",
+                timeToPlay: "Время Играть!",
+                taketurns: "По очереди давайте подсказки из одного слова",
+                theCategory: "Категория",
+                rulesReminder: "Напоминание Правил",
+                rule1: 'Каждый игрок говорит <strong>одно слово</strong>, связанное с секретным словом',
+                rule2: 'Самозванец должен <strong style="color: var(--accent-red);">блефовать</strong> — он не знает слова!',
+                rule3: 'После всех, <strong>обсудите и голосуйте</strong>',
+                startVoting: "Начать Голосование",
+                revealResults: "Показать Результаты",
+                whoIsImpostor: "Кто Самозванец?",
+                discussAndVote: "Обсудите и проголосуйте за того, кто по-вашему блефует",
+                revealImpostor: "Раскрыть Самозванца!",
+                gameOver: "Игра Окончена!",
+                secretWordWas: "Секретное слово было",
+                impostorWas: "Самозванцем был(а)",
+                impostorsWere: "Самозванцами были",
+                playAgain: "Играть Снова",
+                backToHome: "На Главную",
+                youAreThe: "Ты",
+                impostor: "САМОЗВАНЕЦ!",
+                blendIn: "Вписывайся, не зная слова",
+                categoryHint: "Подсказка категории:",
+                theSecretWord: "Секретное слово"
             }
         };
 
@@ -2212,6 +2536,62 @@
                 vehicles: ['Bil', 'Motorcykel', 'Cykel', 'Bus', 'Tog', 'Fly', 'Helikopter', 'Båd', 'Ubåd', 'Lastbil', 'Taxa', 'Ambulance', 'Scooter', 'Skateboard', 'Raket', 'Traktor', 'Varevogn', 'Kano', 'Vandscooter', 'Luftballon'],
                 clothing: ['T-shirt', 'Jeans', 'Kjole', 'Jakke', 'Sneakers', 'Hat', 'Halstørklæde', 'Handsker', 'Sokker', 'Sweater', 'Shorts', 'Nederdel', 'Støvler', 'Sandaler', 'Slips', 'Bælte', 'Frakke', 'Hættetrøje', 'Pyjamas', 'Badedragt'],
                 music: ['Guitar', 'Klaver', 'Trommer', 'Violin', 'Saxofon', 'Trompet', 'Fløjte', 'Rock', 'Jazz', 'Pop', 'Hip Hop', 'Klassisk', 'Reggae', 'Blues', 'Elektronisk', 'Country', 'Mikrofon', 'Koncert', 'DJ', 'Orkester']
+            },
+            pl: {
+                food: ['Pizza', 'Sushi', 'Burger', 'Makaron', 'Taco', 'Czekolada', 'Lody', 'Naleśniki', 'Stek', 'Sałatka', 'Kanapka', 'Zupa', 'Curry', 'Ramen', 'Pączek', 'Ciasto', 'Chleb', 'Ser', 'Jabłko', 'Banan', 'Pomarańcza', 'Truskawka', 'Arbuz', 'Kawa', 'Herbata'],
+                animals: ['Pies', 'Kot', 'Słoń', 'Lew', 'Tygrys', 'Pingwin', 'Delfin', 'Orzeł', 'Rekin', 'Małpa', 'Żyrafa', 'Zebra', 'Niedźwiedź', 'Wilk', 'Lis', 'Królik', 'Koń', 'Krowa', 'Świnia', 'Kurczak', 'Kaczka', 'Sowa', 'Wąż', 'Żółw', 'Żaba'],
+                movies: ['Titanic', 'Avatar', 'Gwiezdne Wojny', 'Harry Potter', 'Kraina Lodu', 'Shrek', 'Batman', 'Spider-Man', 'Jurassic Park', 'Król Lew', 'Gdzie jest Nemo', 'Toy Story', 'Matrix', 'Szczęki', 'Rocky', 'Gladiator', 'Incepcja', 'Interstellar', 'Forrest Gump', 'Joker'],
+                sports: ['Piłka nożna', 'Koszykówka', 'Tenis', 'Pływanie', 'Bieganie', 'Golf', 'Boks', 'Hokej', 'Baseball', 'Siatkówka', 'Narciarstwo', 'Surfing', 'Kolarstwo', 'Zapasy', 'Karate', 'Joga', 'Gimnastyka', 'Krykiet', 'Rugby', 'Kręgle'],
+                jobs: ['Lekarz', 'Nauczyciel', 'Kucharz', 'Pilot', 'Policjant', 'Strażak', 'Prawnik', 'Inżynier', 'Pielęgniarka', 'Artysta', 'Muzyk', 'Aktor', 'Rolnik', 'Naukowiec', 'Astronauta', 'Dentysta', 'Mechanik', 'Fryzjer', 'Kelner', 'Kierowca'],
+                places: ['Plaża', 'Góra', 'Las', 'Pustynia', 'Wyspa', 'Miasto', 'Wioska', 'Zamek', 'Muzeum', 'Biblioteka', 'Szpital', 'Lotnisko', 'Restauracja', 'Szkoła', 'Kościół', 'Stadion', 'Zoo', 'Park', 'Centrum handlowe', 'Kino'],
+                objects: ['Telefon', 'Komputer', 'Telewizor', 'Samochód', 'Rower', 'Krzesło', 'Stół', 'Lampa', 'Lustro', 'Zegarek', 'Aparat', 'Gitara', 'Pianino', 'Książka', 'Długopis', 'Parasol', 'Okulary', 'Klucz', 'Portfel', 'Torba'],
+                countries: ['Japonia', 'Brazylia', 'Francja', 'Egipt', 'Australia', 'Kanada', 'Meksyk', 'Indie', 'Włochy', 'Niemcy', 'Chiny', 'Hiszpania', 'Argentyna', 'Rosja', 'RPA', 'Tajlandia', 'Grecja', 'Szwecja', 'Maroko', 'Peru'],
+                brands: ['Apple', 'Nike', 'Google', 'Amazon', 'McDonald\'s', 'Coca-Cola', 'Samsung', 'Toyota', 'Netflix', 'Adidas', 'Starbucks', 'Disney', 'IKEA', 'Lego', 'Sony', 'Microsoft', 'Ferrari', 'Rolex', 'Chanel', 'Gucci'],
+                vehicles: ['Samochód', 'Motocykl', 'Rower', 'Autobus', 'Pociąg', 'Samolot', 'Helikopter', 'Łódź', 'Łódź podwodna', 'Ciężarówka', 'Taksówka', 'Karetka', 'Skuter', 'Deskorolka', 'Rakieta', 'Traktor', 'Furgonetka', 'Kajak', 'Skuter wodny', 'Balon'],
+                clothing: ['Koszulka', 'Dżinsy', 'Sukienka', 'Kurtka', 'Trampki', 'Kapelusz', 'Szalik', 'Rękawiczki', 'Skarpetki', 'Sweter', 'Szorty', 'Spódnica', 'Buty', 'Sandały', 'Krawat', 'Pasek', 'Płaszcz', 'Bluza', 'Piżama', 'Kostium kąpielowy'],
+                music: ['Gitara', 'Pianino', 'Perkusja', 'Skrzypce', 'Saksofon', 'Trąbka', 'Flet', 'Rock', 'Jazz', 'Pop', 'Hip Hop', 'Klasyczna', 'Reggae', 'Blues', 'Elektroniczna', 'Country', 'Mikrofon', 'Koncert', 'DJ', 'Orkiestra']
+            },
+            it: {
+                food: ['Pizza', 'Sushi', 'Hamburger', 'Pasta', 'Taco', 'Cioccolato', 'Gelato', 'Pancake', 'Bistecca', 'Insalata', 'Panino', 'Zuppa', 'Curry', 'Ramen', 'Ciambella', 'Torta', 'Pane', 'Formaggio', 'Mela', 'Banana', 'Arancia', 'Fragola', 'Anguria', 'Caffè', 'Tè'],
+                animals: ['Cane', 'Gatto', 'Elefante', 'Leone', 'Tigre', 'Pinguino', 'Delfino', 'Aquila', 'Squalo', 'Scimmia', 'Giraffa', 'Zebra', 'Orso', 'Lupo', 'Volpe', 'Coniglio', 'Cavallo', 'Mucca', 'Maiale', 'Pollo', 'Anatra', 'Gufo', 'Serpente', 'Tartaruga', 'Rana'],
+                movies: ['Titanic', 'Avatar', 'Star Wars', 'Harry Potter', 'Frozen', 'Shrek', 'Batman', 'Spider-Man', 'Jurassic Park', 'Il Re Leone', 'Alla Ricerca di Nemo', 'Toy Story', 'Matrix', 'Lo Squalo', 'Rocky', 'Il Gladiatore', 'Inception', 'Interstellar', 'Forrest Gump', 'Joker'],
+                sports: ['Calcio', 'Pallacanestro', 'Tennis', 'Nuoto', 'Corsa', 'Golf', 'Pugilato', 'Hockey', 'Baseball', 'Pallavolo', 'Sci', 'Surf', 'Ciclismo', 'Lotta', 'Karate', 'Yoga', 'Ginnastica', 'Cricket', 'Rugby', 'Bowling'],
+                jobs: ['Medico', 'Insegnante', 'Cuoco', 'Pilota', 'Poliziotto', 'Pompiere', 'Avvocato', 'Ingegnere', 'Infermiere', 'Artista', 'Musicista', 'Attore', 'Agricoltore', 'Scienziato', 'Astronauta', 'Dentista', 'Meccanico', 'Parrucchiere', 'Cameriere', 'Autista'],
+                places: ['Spiaggia', 'Montagna', 'Foresta', 'Deserto', 'Isola', 'Città', 'Villaggio', 'Castello', 'Museo', 'Biblioteca', 'Ospedale', 'Aeroporto', 'Ristorante', 'Scuola', 'Chiesa', 'Stadio', 'Zoo', 'Parco', 'Centro commerciale', 'Cinema'],
+                objects: ['Telefono', 'Computer', 'TV', 'Auto', 'Bicicletta', 'Sedia', 'Tavolo', 'Lampada', 'Specchio', 'Orologio', 'Macchina fotografica', 'Chitarra', 'Pianoforte', 'Libro', 'Penna', 'Ombrello', 'Occhiali', 'Chiave', 'Portafoglio', 'Borsa'],
+                countries: ['Giappone', 'Brasile', 'Francia', 'Egitto', 'Australia', 'Canada', 'Messico', 'India', 'Italia', 'Germania', 'Cina', 'Spagna', 'Argentina', 'Russia', 'Sudafrica', 'Thailandia', 'Grecia', 'Svezia', 'Marocco', 'Perù'],
+                brands: ['Apple', 'Nike', 'Google', 'Amazon', 'McDonald\'s', 'Coca-Cola', 'Samsung', 'Toyota', 'Netflix', 'Adidas', 'Starbucks', 'Disney', 'IKEA', 'Lego', 'Sony', 'Microsoft', 'Ferrari', 'Rolex', 'Chanel', 'Gucci'],
+                vehicles: ['Auto', 'Moto', 'Bicicletta', 'Autobus', 'Treno', 'Aereo', 'Elicottero', 'Barca', 'Sottomarino', 'Camion', 'Taxi', 'Ambulanza', 'Scooter', 'Skateboard', 'Razzo', 'Trattore', 'Furgone', 'Canoa', 'Moto d\'acqua', 'Mongolfiera'],
+                clothing: ['Maglietta', 'Jeans', 'Vestito', 'Giacca', 'Scarpe da ginnastica', 'Cappello', 'Sciarpa', 'Guanti', 'Calzini', 'Maglione', 'Pantaloncini', 'Gonna', 'Stivali', 'Sandali', 'Cravatta', 'Cintura', 'Cappotto', 'Felpa', 'Pigiama', 'Costume da bagno'],
+                music: ['Chitarra', 'Pianoforte', 'Batteria', 'Violino', 'Sassofono', 'Tromba', 'Flauto', 'Rock', 'Jazz', 'Pop', 'Hip Hop', 'Classica', 'Reggae', 'Blues', 'Elettronica', 'Country', 'Microfono', 'Concerto', 'DJ', 'Orchestra']
+            },
+            zh: {
+                food: ['披萨', '寿司', '汉堡', '意大利面', '塔可', '巧克力', '冰淇淋', '煎饼', '牛排', '沙拉', '三明治', '汤', '咖喱', '拉面', '甜甜圈', '蛋糕', '面包', '奶酪', '苹果', '香蕉', '橙子', '草莓', '西瓜', '咖啡', '茶'],
+                animals: ['狗', '猫', '大象', '狮子', '老虎', '企鹅', '海豚', '老鹰', '鲨鱼', '猴子', '长颈鹿', '斑马', '熊', '狼', '狐狸', '兔子', '马', '牛', '猪', '鸡', '鸭子', '猫头鹰', '蛇', '乌龟', '青蛙'],
+                movies: ['泰坦尼克号', '阿凡达', '星球大战', '哈利波特', '冰雪奇缘', '怪物史莱克', '蝙蝠侠', '蜘蛛侠', '侏罗纪公园', '狮子王', '海底总动员', '玩具总动员', '黑客帝国', '大白鲨', '洛基', '角斗士', '盗梦空间', '星际穿越', '阿甘正传', '小丑'],
+                sports: ['足球', '篮球', '网球', '游泳', '跑步', '高尔夫', '拳击', '曲棍球', '棒球', '排球', '滑雪', '冲浪', '骑自行车', '摔跤', '空手道', '瑜伽', '体操', '板球', '橄榄球', '保龄球'],
+                jobs: ['医生', '老师', '厨师', '飞行员', '警察', '消防员', '律师', '工程师', '护士', '艺术家', '音乐家', '演员', '农民', '科学家', '宇航员', '牙医', '机械师', '理发师', '服务员', '司机'],
+                places: ['海滩', '山', '森林', '沙漠', '岛屿', '城市', '村庄', '城堡', '博物馆', '图书馆', '医院', '机场', '餐厅', '学校', '教堂', '体育场', '动物园', '公园', '购物中心', '电影院'],
+                objects: ['手机', '电脑', '电视', '汽车', '自行车', '椅子', '桌子', '灯', '镜子', '手表', '相机', '吉他', '钢琴', '书', '笔', '雨伞', '眼镜', '钥匙', '钱包', '包'],
+                countries: ['日本', '巴西', '法国', '埃及', '澳大利亚', '加拿大', '墨西哥', '印度', '意大利', '德国', '中国', '西班牙', '阿根廷', '俄罗斯', '南非', '泰国', '希腊', '瑞典', '摩洛哥', '秘鲁'],
+                brands: ['苹果', '耐克', '谷歌', '亚马逊', '麦当劳', '可口可乐', '三星', '丰田', '奈飞', '阿迪达斯', '星巴克', '迪士尼', '宜家', '乐高', '索尼', '微软', '法拉利', '劳力士', '香奈儿', '古驰'],
+                vehicles: ['汽车', '摩托车', '自行车', '公交车', '火车', '飞机', '直升机', '船', '潜水艇', '卡车', '出租车', '救护车', '滑板车', '滑板', '火箭', '拖拉机', '货车', '独木舟', '水上摩托', '热气球'],
+                clothing: ['T恤', '牛仔裤', '连衣裙', '夹克', '运动鞋', '帽子', '围巾', '手套', '袜子', '毛衣', '短裤', '裙子', '靴子', '凉鞋', '领带', '腰带', '大衣', '卫衣', '睡衣', '泳衣'],
+                music: ['吉他', '钢琴', '鼓', '小提琴', '萨克斯', '小号', '长笛', '摇滚', '爵士', '流行', '嘻哈', '古典', '雷鬼', '蓝调', '电子', '乡村', '麦克风', '音乐会', 'DJ', '管弦乐队']
+            },
+            ru: {
+                food: ['Пицца', 'Суши', 'Бургер', 'Паста', 'Тако', 'Шоколад', 'Мороженое', 'Блины', 'Стейк', 'Салат', 'Бутерброд', 'Суп', 'Карри', 'Рамен', 'Пончик', 'Торт', 'Хлеб', 'Сыр', 'Яблоко', 'Банан', 'Апельсин', 'Клубника', 'Арбуз', 'Кофе', 'Чай'],
+                animals: ['Собака', 'Кошка', 'Слон', 'Лев', 'Тигр', 'Пингвин', 'Дельфин', 'Орёл', 'Акула', 'Обезьяна', 'Жираф', 'Зебра', 'Медведь', 'Волк', 'Лиса', 'Кролик', 'Лошадь', 'Корова', 'Свинья', 'Курица', 'Утка', 'Сова', 'Змея', 'Черепаха', 'Лягушка'],
+                movies: ['Титаник', 'Аватар', 'Звёздные войны', 'Гарри Поттер', 'Холодное сердце', 'Шрек', 'Бэтмен', 'Человек-паук', 'Парк Юрского периода', 'Король Лев', 'В поисках Немо', 'История игрушек', 'Матрица', 'Челюсти', 'Рокки', 'Гладиатор', 'Начало', 'Интерстеллар', 'Форрест Гамп', 'Джокер'],
+                sports: ['Футбол', 'Баскетбол', 'Теннис', 'Плавание', 'Бег', 'Гольф', 'Бокс', 'Хоккей', 'Бейсбол', 'Волейбол', 'Лыжи', 'Сёрфинг', 'Велоспорт', 'Борьба', 'Карате', 'Йога', 'Гимнастика', 'Крикет', 'Регби', 'Боулинг'],
+                jobs: ['Врач', 'Учитель', 'Повар', 'Пилот', 'Полицейский', 'Пожарный', 'Адвокат', 'Инженер', 'Медсестра', 'Художник', 'Музыкант', 'Актёр', 'Фермер', 'Учёный', 'Космонавт', 'Стоматолог', 'Механик', 'Парикмахер', 'Официант', 'Водитель'],
+                places: ['Пляж', 'Гора', 'Лес', 'Пустыня', 'Остров', 'Город', 'Деревня', 'Замок', 'Музей', 'Библиотека', 'Больница', 'Аэропорт', 'Ресторан', 'Школа', 'Церковь', 'Стадион', 'Зоопарк', 'Парк', 'Торговый центр', 'Кинотеатр'],
+                objects: ['Телефон', 'Компьютер', 'Телевизор', 'Машина', 'Велосипед', 'Стул', 'Стол', 'Лампа', 'Зеркало', 'Часы', 'Фотоаппарат', 'Гитара', 'Пианино', 'Книга', 'Ручка', 'Зонт', 'Очки', 'Ключ', 'Кошелёк', 'Сумка'],
+                countries: ['Япония', 'Бразилия', 'Франция', 'Египет', 'Австралия', 'Канада', 'Мексика', 'Индия', 'Италия', 'Германия', 'Китай', 'Испания', 'Аргентина', 'Россия', 'ЮАР', 'Таиланд', 'Греция', 'Швеция', 'Марокко', 'Перу'],
+                brands: ['Apple', 'Nike', 'Google', 'Amazon', 'McDonald\'s', 'Coca-Cola', 'Samsung', 'Toyota', 'Netflix', 'Adidas', 'Starbucks', 'Disney', 'IKEA', 'Lego', 'Sony', 'Microsoft', 'Ferrari', 'Rolex', 'Chanel', 'Gucci'],
+                vehicles: ['Машина', 'Мотоцикл', 'Велосипед', 'Автобус', 'Поезд', 'Самолёт', 'Вертолёт', 'Лодка', 'Подводная лодка', 'Грузовик', 'Такси', 'Скорая', 'Скутер', 'Скейтборд', 'Ракета', 'Трактор', 'Фургон', 'Каноэ', 'Гидроцикл', 'Воздушный шар'],
+                clothing: ['Футболка', 'Джинсы', 'Платье', 'Куртка', 'Кроссовки', 'Шляпа', 'Шарф', 'Перчатки', 'Носки', 'Свитер', 'Шорты', 'Юбка', 'Сапоги', 'Сандалии', 'Галстук', 'Ремень', 'Пальто', 'Толстовка', 'Пижама', 'Купальник'],
+                music: ['Гитара', 'Пианино', 'Барабаны', 'Скрипка', 'Саксофон', 'Труба', 'Флейта', 'Рок', 'Джаз', 'Поп', 'Хип-хоп', 'Классика', 'Регги', 'Блюз', 'Электронная', 'Кантри', 'Микрофон', 'Концерт', 'Диджей', 'Оркестр']
             }
         };
 
@@ -2224,7 +2604,11 @@
             nb: { food: 'Mat', animals: 'Dyr', movies: 'Filmer', sports: 'Sport', jobs: 'Yrker', places: 'Steder', objects: 'Gjenstander', countries: 'Land', brands: 'Merker', vehicles: 'Kjøretøy', clothing: 'Klær', music: 'Musikk' },
             nn: { food: 'Mat', animals: 'Dyr', movies: 'Filmar', sports: 'Sport', jobs: 'Yrke', places: 'Stader', objects: 'Gjenstandar', countries: 'Land', brands: 'Merke', vehicles: 'Køyretøy', clothing: 'Klede', music: 'Musikk' },
             sv: { food: 'Mat', animals: 'Djur', movies: 'Filmer', sports: 'Sport', jobs: 'Yrken', places: 'Platser', objects: 'Föremål', countries: 'Länder', brands: 'Varumärken', vehicles: 'Fordon', clothing: 'Kläder', music: 'Musik' },
-            da: { food: 'Mad', animals: 'Dyr', movies: 'Film', sports: 'Sport', jobs: 'Jobs', places: 'Steder', objects: 'Genstande', countries: 'Lande', brands: 'Brands', vehicles: 'Køretøjer', clothing: 'Tøj', music: 'Musik' }
+            da: { food: 'Mad', animals: 'Dyr', movies: 'Film', sports: 'Sport', jobs: 'Jobs', places: 'Steder', objects: 'Genstande', countries: 'Lande', brands: 'Brands', vehicles: 'Køretøjer', clothing: 'Tøj', music: 'Musik' },
+            pl: { food: 'Jedzenie', animals: 'Zwierzęta', movies: 'Filmy', sports: 'Sport', jobs: 'Zawody', places: 'Miejsca', objects: 'Przedmioty', countries: 'Kraje', brands: 'Marki', vehicles: 'Pojazdy', clothing: 'Ubrania', music: 'Muzyka' },
+            it: { food: 'Cibo', animals: 'Animali', movies: 'Film', sports: 'Sport', jobs: 'Lavori', places: 'Luoghi', objects: 'Oggetti', countries: 'Paesi', brands: 'Marchi', vehicles: 'Veicoli', clothing: 'Abbigliamento', music: 'Musica' },
+            zh: { food: '食物', animals: '动物', movies: '电影', sports: '运动', jobs: '职业', places: '地点', objects: '物品', countries: '国家', brands: '品牌', vehicles: '交通工具', clothing: '服装', music: '音乐' },
+            ru: { food: 'Еда', animals: 'Животные', movies: 'Фильмы', sports: 'Спорт', jobs: 'Профессии', places: 'Места', objects: 'Предметы', countries: 'Страны', brands: 'Бренды', vehicles: 'Транспорт', clothing: 'Одежда', music: 'Музыка' }
         };
 
         // Game state
@@ -2251,14 +2635,39 @@
             'pt-BR': { flag: '/flags/br.svg', name: 'Português (BR)' },
             'pt-PT': { flag: '/flags/pt.svg', name: 'Português (PT)' },
             nb: { flag: '/flags/no.svg', name: 'Norsk Bokmål' },
-            nn: { flag: '/flags/no.svg', name: 'Norsk Nynorsk' },
+            nn: { flag: '/flags/no.svg', name: 'Nynorsk' },
             sv: { flag: '/flags/se.svg', name: 'Svenska' },
-            da: { flag: '/flags/dk.svg', name: 'Dansk' }
+            da: { flag: '/flags/dk.svg', name: 'Dansk' },
+            pl: { flag: '/flags/pl.svg', name: 'Polski' },
+            it: { flag: '/flags/it.svg', name: 'Italiano' },
+            zh: { flag: '/flags/cn.svg', name: '中文' },
+            ru: { flag: '/flags/ru.svg', name: 'Русский' }
         };
 
         // Language functions
         function toggleLangDropdown() {
-            document.getElementById('lang-dropdown').classList.toggle('open');
+            const dropdown = document.getElementById('lang-dropdown');
+            dropdown.classList.toggle('open');
+            if (dropdown.classList.contains('open')) {
+                const searchInput = document.getElementById('lang-search');
+                searchInput.value = '';
+                filterLanguages('');
+                setTimeout(() => searchInput.focus(), 50);
+            }
+        }
+
+        function filterLanguages(query) {
+            const options = document.querySelectorAll('.lang-option');
+            const lowerQuery = query.toLowerCase();
+            options.forEach(option => {
+                const text = option.textContent.toLowerCase();
+                const searchTerms = (option.dataset.search || '').toLowerCase();
+                if (text.includes(lowerQuery) || searchTerms.includes(lowerQuery)) {
+                    option.classList.remove('hidden');
+                } else {
+                    option.classList.add('hidden');
+                }
+            });
         }
 
         function setLanguage(lang) {
