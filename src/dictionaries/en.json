@@ -2,7 +2,8 @@
   "nav": {
     "about": "About",
     "apps": "Apps",
-    "contact": "Contact"
+    "contact": "Contact",
+    "language": "Language"
   },
   "hero": {
     "title": "We build apps",

@@ -1,7 +1,8 @@
 import { notFound } from "next/navigation";
 import { getDictionary } from "@/i18n/dictionaries";
-import { locales, localeNames, type Locale } from "@/i18n/config";
+import { locales, type Locale } from "@/i18n/config";
 import Link from "next/link";
+import { LanguageSwitcher } from "@/components/LanguageSwitcher";
 
 function isValidLocale(locale: string): locale is Locale {
   return locales.includes(locale as Locale);
@@ -21,8 +22,6 @@ export default async function Home({
   const locale = rawLocale;
   const dict = await getDictionary(locale);
 
-  const otherLocale: Locale = locale === "en" ? "es" : "en";
-
   return (
     <div className="min-h-dvh bg-background text-foreground">
       {/* Navigation */}
@@ -41,12 +40,7 @@ export default async function Home({
             <a href="#contact" className="transition-colors hover:text-foreground">
               {dict.nav.contact}
             </a>
-            <Link
-              href={`/${otherLocale}`}
-              className="rounded-lg border border-border px-3 py-1.5 transition-colors hover:bg-card"
-            >
-              {localeNames[otherLocale]}
-            </Link>
+            <LanguageSwitcher currentLocale={locale} label={dict.nav.language} />
           </div>
         </div>
       </nav>
