@@ -142,26 +142,32 @@ export default function Home() {
               Our Apps
             </h2>
             <p className="mt-4 text-muted">
-              Great things are in the works. Stay tuned.
+              Games and tools we&apos;ve built. More coming soon.
             </p>
           </div>
           <div className="mt-16 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {/* Placeholder App Card 1 */}
-            <div className="group relative overflow-hidden rounded-xl border border-border bg-card p-6">
-              <div className="mb-4 flex size-12 items-center justify-center rounded-xl bg-zinc-800">
-                <span className="text-xl">🚀</span>
+            {/* Impostor Game */}
+            <a
+              href="/games/impostor.html"
+              className="group relative overflow-hidden rounded-xl border border-border bg-card p-6 transition-all hover:border-[#ff4d6a]/50 hover:shadow-[0_0_30px_rgba(255,77,106,0.15)]"
+            >
+              <div className="mb-4 flex size-12 items-center justify-center rounded-xl bg-gradient-to-br from-[#ff4d6a] to-[#ff7a45]">
+                <span className="text-xl">🎭</span>
               </div>
-              <h3 className="font-semibold">Coming Soon</h3>
+              <h3 className="font-semibold">Impostor</h3>
               <p className="mt-2 text-sm text-muted">
-                Our first app is in development. Something to help you stay
-                organized.
+                A party word game where one player bluffs their way through.
+                Find the impostor before it&apos;s too late!
               </p>
-              <div className="mt-4">
-                <span className="inline-flex items-center rounded-full bg-accent/10 px-3 py-1 text-xs font-medium text-accent">
-                  In Development
+              <div className="mt-4 flex items-center justify-between">
+                <span className="inline-flex items-center rounded-full bg-emerald-500/10 px-3 py-1 text-xs font-medium text-emerald-400">
+                  Play Now
+                </span>
+                <span className="text-xs text-muted opacity-0 transition-opacity group-hover:opacity-100">
+                  3+ players
                 </span>
               </div>
-            </div>
+            </a>
 
             {/* Placeholder App Card 2 */}
             <div className="group relative overflow-hidden rounded-xl border border-border bg-card p-6">
