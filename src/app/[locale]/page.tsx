@@ -1,22 +1,52 @@
-export default function Home() {
+import { notFound } from "next/navigation";
+import { getDictionary } from "@/i18n/dictionaries";
+import { locales, localeNames, type Locale } from "@/i18n/config";
+import Link from "next/link";
+
+function isValidLocale(locale: string): locale is Locale {
+  return locales.includes(locale as Locale);
+}
+
+export default async function Home({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}) {
+  const { locale: rawLocale } = await params;
+
+  if (!isValidLocale(rawLocale)) {
+    notFound();
+  }
+
+  const locale = rawLocale;
+  const dict = await getDictionary(locale);
+
+  const otherLocale: Locale = locale === "en" ? "es" : "en";
+
   return (
     <div className="min-h-dvh bg-background text-foreground">
       {/* Navigation */}
       <nav className="fixed top-0 left-0 right-0 z-50 border-b border-border bg-background/80 backdrop-blur-sm">
         <div className="mx-auto flex h-16 max-w-5xl items-center justify-between px-6">
-          <a href="#" className="text-lg font-semibold tracking-tight">
+          <Link href={`/${locale}`} className="text-lg font-semibold tracking-tight">
             Tupungato Studios
-          </a>
+          </Link>
           <div className="flex items-center gap-6 text-sm text-muted">
             <a href="#about" className="transition-colors hover:text-foreground">
-              About
+              {dict.nav.about}
             </a>
             <a href="#apps" className="transition-colors hover:text-foreground">
-              Apps
+              {dict.nav.apps}
             </a>
             <a href="#contact" className="transition-colors hover:text-foreground">
-              Contact
+              {dict.nav.contact}
             </a>
+            <Link
+              href={`/${otherLocale}`}
+              className="rounded-lg border border-border px-3 py-1.5 transition-colors hover:bg-card"
+            >
+              {localeNames[otherLocale]}
+            </Link>
           </div>
         </div>
       </nav>
@@ -25,26 +55,25 @@ export default function Home() {
       <section className="flex min-h-dvh flex-col items-center justify-center px-6 pt-16 text-center">
         <div className="mx-auto max-w-2xl">
           <h1 className="text-balance text-4xl font-semibold tracking-tight sm:text-5xl md:text-6xl">
-            We build apps
+            {dict.hero.title}
             <br />
-            <span className="text-muted">people love</span>
+            <span className="text-muted">{dict.hero.titleHighlight}</span>
           </h1>
           <p className="mx-auto mt-6 max-w-md text-pretty text-lg text-muted">
-            Tupungato Studios crafts beautiful, intuitive applications that make
-            everyday tasks simpler and more enjoyable.
+            {dict.hero.description}
           </p>
           <div className="mt-10 flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
             <a
               href="#apps"
               className="inline-flex h-12 items-center justify-center rounded-xl bg-foreground px-6 text-sm font-medium text-background transition-colors hover:bg-foreground/90"
             >
-              See Our Work
+              {dict.hero.cta}
             </a>
             <a
               href="#contact"
               className="inline-flex h-12 items-center justify-center rounded-xl border border-border px-6 text-sm font-medium transition-colors hover:bg-card"
             >
-              Get in Touch
+              {dict.hero.ctaSecondary}
             </a>
           </div>
         </div>
@@ -55,12 +84,10 @@ export default function Home() {
         <div className="mx-auto max-w-5xl px-6">
           <div className="mx-auto max-w-2xl text-center">
             <h2 className="text-balance text-3xl font-semibold tracking-tight">
-              About the Studio
+              {dict.about.title}
             </h2>
             <p className="mt-6 text-pretty text-lg leading-relaxed text-muted">
-              We&apos;re a small, focused team passionate about creating apps
-              that genuinely help people. No bloat, no unnecessary features—just
-              thoughtful design and solid engineering.
+              {dict.about.description}
             </p>
           </div>
           <div className="mt-16 grid gap-8 sm:grid-cols-3">
@@ -81,9 +108,9 @@ export default function Home() {
                   />
                 </svg>
               </div>
-              <h3 className="font-semibold">Simple by Design</h3>
+              <h3 className="font-semibold">{dict.about.features.simple.title}</h3>
               <p className="mt-2 text-sm text-muted">
-                We strip away complexity to deliver apps that just work.
+                {dict.about.features.simple.description}
               </p>
             </div>
             <div className="rounded-xl border border-border bg-card p-6">
@@ -103,9 +130,9 @@ export default function Home() {
                   />
                 </svg>
               </div>
-              <h3 className="font-semibold">Mobile First</h3>
+              <h3 className="font-semibold">{dict.about.features.mobile.title}</h3>
               <p className="mt-2 text-sm text-muted">
-                Built for the devices you use most, with native performance.
+                {dict.about.features.mobile.description}
               </p>
             </div>
             <div className="rounded-xl border border-border bg-card p-6">
@@ -125,9 +152,9 @@ export default function Home() {
                   />
                 </svg>
               </div>
-              <h3 className="font-semibold">Made with Care</h3>
+              <h3 className="font-semibold">{dict.about.features.care.title}</h3>
               <p className="mt-2 text-sm text-muted">
-                Every detail matters. We obsess so you don&apos;t have to.
+                {dict.about.features.care.description}
               </p>
             </div>
           </div>
@@ -139,11 +166,9 @@ export default function Home() {
         <div className="mx-auto max-w-5xl px-6">
           <div className="mx-auto max-w-2xl text-center">
             <h2 className="text-balance text-3xl font-semibold tracking-tight">
-              Our Apps
+              {dict.apps.title}
             </h2>
-            <p className="mt-4 text-muted">
-              Games and tools we&apos;ve built. More coming soon.
-            </p>
+            <p className="mt-4 text-muted">{dict.apps.subtitle}</p>
           </div>
           <div className="mt-16 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {/* Impostor Game */}
@@ -154,17 +179,16 @@ export default function Home() {
               <div className="mb-4 flex size-12 items-center justify-center rounded-xl bg-gradient-to-br from-[#ff4d6a] to-[#ff7a45]">
                 <span className="text-xl">🎭</span>
               </div>
-              <h3 className="font-semibold">Impostor</h3>
+              <h3 className="font-semibold">{dict.apps.impostor.title}</h3>
               <p className="mt-2 text-sm text-muted">
-                A party word game where one player bluffs their way through.
-                Find the impostor before it&apos;s too late!
+                {dict.apps.impostor.description}
               </p>
               <div className="mt-4 flex items-center justify-between">
                 <span className="inline-flex items-center rounded-full bg-emerald-500/10 px-3 py-1 text-xs font-medium text-emerald-400">
-                  Play Now
+                  {dict.apps.impostor.cta}
                 </span>
                 <span className="text-xs text-muted opacity-0 transition-opacity group-hover:opacity-100">
-                  3+ players
+                  {dict.apps.impostor.players}
                 </span>
               </div>
             </a>
@@ -174,13 +198,13 @@ export default function Home() {
               <div className="mb-4 flex size-12 items-center justify-center rounded-xl bg-zinc-800">
                 <span className="text-xl">✨</span>
               </div>
-              <h3 className="font-semibold">Coming Soon</h3>
+              <h3 className="font-semibold">{dict.apps.comingSoon.title}</h3>
               <p className="mt-2 text-sm text-muted">
-                A tool to simplify your daily routines. Details coming soon.
+                {dict.apps.placeholder1.description}
               </p>
               <div className="mt-4">
                 <span className="inline-flex items-center rounded-full bg-zinc-700/50 px-3 py-1 text-xs font-medium text-muted">
-                  Planned
+                  {dict.apps.comingSoon.status}
                 </span>
               </div>
             </div>
@@ -190,13 +214,13 @@ export default function Home() {
               <div className="mb-4 flex size-12 items-center justify-center rounded-xl bg-zinc-800">
                 <span className="text-xl">💡</span>
               </div>
-              <h3 className="font-semibold">Coming Soon</h3>
+              <h3 className="font-semibold">{dict.apps.comingSoon.title}</h3>
               <p className="mt-2 text-sm text-muted">
-                An idea we&apos;re excited about. More updates to follow.
+                {dict.apps.placeholder2.description}
               </p>
               <div className="mt-4">
                 <span className="inline-flex items-center rounded-full bg-zinc-700/50 px-3 py-1 text-xs font-medium text-muted">
-                  Planned
+                  {dict.apps.comingSoon.status}
                 </span>
               </div>
             </div>
@@ -209,17 +233,14 @@ export default function Home() {
         <div className="mx-auto max-w-5xl px-6">
           <div className="mx-auto max-w-md text-center">
             <h2 className="text-balance text-3xl font-semibold tracking-tight">
-              Let&apos;s Connect
+              {dict.contact.title}
             </h2>
-            <p className="mt-4 text-muted">
-              Have a question, idea, or just want to say hi? We&apos;d love to
-              hear from you.
-            </p>
+            <p className="mt-4 text-muted">{dict.contact.description}</p>
             <a
-              href="mailto:hello@tupungatostudios.com"
+              href="mailto:tupungatostudios@gmail.com"
               className="mt-8 inline-flex h-12 items-center justify-center rounded-xl bg-foreground px-6 text-sm font-medium text-background transition-colors hover:bg-foreground/90"
             >
-              hello@tupungatostudios.com
+              tupungatostudios@gmail.com
             </a>
           </div>
         </div>
@@ -229,7 +250,9 @@ export default function Home() {
       <footer className="border-t border-border py-8">
         <div className="mx-auto max-w-5xl px-6">
           <div className="flex flex-col items-center justify-between gap-4 text-sm text-muted sm:flex-row">
-            <p>© {new Date().getFullYear()} Tupungato Studios</p>
+            <p>
+              © {new Date().getFullYear()} {dict.footer.copyright}
+            </p>
             <div className="flex gap-6">
               <a href="#" className="transition-colors hover:text-foreground">
                 Twitter

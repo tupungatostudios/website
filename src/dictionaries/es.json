@@ -1,0 +1,65 @@
+{
+  "nav": {
+    "about": "Nosotros",
+    "apps": "Apps",
+    "contact": "Contacto"
+  },
+  "hero": {
+    "title": "Creamos apps",
+    "titleHighlight": "que enamoran",
+    "description": "Tupungato Studios crea aplicaciones hermosas e intuitivas que hacen las tareas cotidianas mas simples y agradables.",
+    "cta": "Ver Nuestro Trabajo",
+    "ctaSecondary": "Contactanos"
+  },
+  "about": {
+    "title": "Sobre el Estudio",
+    "description": "Somos un equipo pequeno y enfocado, apasionados por crear apps que realmente ayudan a las personas. Sin excesos, sin funciones innecesarias—solo diseno cuidadoso e ingenieria solida.",
+    "features": {
+      "simple": {
+        "title": "Simple por Diseno",
+        "description": "Eliminamos la complejidad para entregar apps que simplemente funcionan."
+      },
+      "mobile": {
+        "title": "Mobile First",
+        "description": "Construidas para los dispositivos que mas usas, con rendimiento nativo."
+      },
+      "care": {
+        "title": "Hecho con Cuidado",
+        "description": "Cada detalle importa. Nos obsesionamos para que tu no tengas que hacerlo."
+      }
+    }
+  },
+  "apps": {
+    "title": "Nuestras Apps",
+    "subtitle": "Juegos y herramientas que hemos creado. Mas por venir.",
+    "impostor": {
+      "title": "Impostor",
+      "description": "Un juego de palabras para fiestas donde un jugador tiene que engañar a los demas. ¡Encuentra al impostor antes de que sea tarde!",
+      "cta": "Jugar Ahora",
+      "players": "3+ jugadores"
+    },
+    "comingSoon": {
+      "title": "Proximamente",
+      "status": "Planeado"
+    },
+    "placeholder1": {
+      "description": "Una herramienta para simplificar tus rutinas diarias. Detalles proximamente."
+    },
+    "placeholder2": {
+      "description": "Una idea que nos emociona. Mas actualizaciones pronto."
+    }
+  },
+  "contact": {
+    "title": "Conectemos",
+    "description": "¿Tienes una pregunta, idea, o simplemente quieres saludar? Nos encantaria saber de ti."
+  },
+  "footer": {
+    "copyright": "Tupungato Studios"
+  },
+  "metadata": {
+    "title": "Tupungato Studios | Creamos Apps que Enamoran",
+    "description": "Tupungato Studios crea aplicaciones hermosas e intuitivas que hacen la diferencia. Descubre nuestro trabajo y lo que nos impulsa.",
+    "ogTitle": "Tupungato Studios",
+    "ogDescription": "Creamos Apps que Enamoran"
+  }
+}

@@ -1,0 +1,65 @@
+{
+  "nav": {
+    "about": "About",
+    "apps": "Apps",
+    "contact": "Contact"
+  },
+  "hero": {
+    "title": "We build apps",
+    "titleHighlight": "people love",
+    "description": "Tupungato Studios crafts beautiful, intuitive applications that make everyday tasks simpler and more enjoyable.",
+    "cta": "See Our Work",
+    "ctaSecondary": "Get in Touch"
+  },
+  "about": {
+    "title": "About the Studio",
+    "description": "We're a small, focused team passionate about creating apps that genuinely help people. No bloat, no unnecessary features—just thoughtful design and solid engineering.",
+    "features": {
+      "simple": {
+        "title": "Simple by Design",
+        "description": "We strip away complexity to deliver apps that just work."
+      },
+      "mobile": {
+        "title": "Mobile First",
+        "description": "Built for the devices you use most, with native performance."
+      },
+      "care": {
+        "title": "Made with Care",
+        "description": "Every detail matters. We obsess so you don't have to."
+      }
+    }
+  },
+  "apps": {
+    "title": "Our Apps",
+    "subtitle": "Games and tools we've built. More coming soon.",
+    "impostor": {
+      "title": "Impostor",
+      "description": "A party word game where one player bluffs their way through. Find the impostor before it's too late!",
+      "cta": "Play Now",
+      "players": "3+ players"
+    },
+    "comingSoon": {
+      "title": "Coming Soon",
+      "status": "Planned"
+    },
+    "placeholder1": {
+      "description": "A tool to simplify your daily routines. Details coming soon."
+    },
+    "placeholder2": {
+      "description": "An idea we're excited about. More updates to follow."
+    }
+  },
+  "contact": {
+    "title": "Let's Connect",
+    "description": "Have a question, idea, or just want to say hi? We'd love to hear from you."
+  },
+  "footer": {
+    "copyright": "Tupungato Studios"
+  },
+  "metadata": {
+    "title": "Tupungato Studios | We Build Apps People Love",
+    "description": "Tupungato Studios creates beautiful, intuitive apps that make a difference. Discover our work and what drives us.",
+    "ogTitle": "Tupungato Studios",
+    "ogDescription": "We Build Apps People Love"
+  }
+}
