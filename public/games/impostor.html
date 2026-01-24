@@ -1037,6 +1037,50 @@
             font-weight: 600;
         }
 
+        /* Home screen - fit viewport without scrolling */
+        #screen-home {
+            display: none;
+            flex-direction: column;
+            min-height: calc(100dvh - 40px); /* Account for container padding */
+            justify-content: center;
+            padding: 0;
+        }
+
+        #screen-home.active {
+            display: flex;
+        }
+
+        #screen-home .header {
+            padding: 20px 0 16px;
+            flex-shrink: 0;
+        }
+
+        #screen-home .card {
+            flex-shrink: 1;
+            overflow: hidden;
+        }
+
+        #screen-home .how-to-play {
+            padding: 12px 0 0;
+        }
+
+        #screen-home .step {
+            margin-bottom: 12px;
+        }
+
+        #screen-home .step:last-child {
+            margin-bottom: 0;
+        }
+
+        #screen-home .btn-primary {
+            flex-shrink: 0;
+            margin-top: auto;
+        }
+
+        #screen-home .lang-selector {
+            flex-shrink: 0;
+        }
+
         /* Random category badge */
         .random-badge {
             display: inline-flex;
@@ -2777,7 +2821,10 @@
         // Show player names screen
         function showPlayerNames() {
             const container = document.getElementById('player-names-list');
-            container.innerHTML = '';
+            container.textContent = '';
+
+            // Load saved names from sessionStorage
+            const savedNames = JSON.parse(sessionStorage.getItem('impostorPlayerNames') || '[]');
 
             for (let i = 0; i < gameState.playerCount; i++) {
                 const nameInput = document.createElement('div');
@@ -2793,6 +2840,11 @@
                 input.placeholder = t('player') + ' ' + (i + 1);
                 input.maxLength = 20;
 
+                // Pre-fill with saved name if available
+                if (savedNames[i]) {
+                    input.value = savedNames[i];
+                }
+
                 nameInput.appendChild(numberDiv);
                 nameInput.appendChild(input);
                 container.appendChild(nameInput);
@@ -2805,11 +2857,17 @@
         function startGame() {
             // Collect player names
             gameState.playerNames = [];
+            const namesToSave = [];
             for (let i = 0; i < gameState.playerCount; i++) {
                 const input = document.getElementById('name-input-' + i);
-                const name = input.value.trim() || (t('player') + ' ' + (i + 1));
+                const rawName = input.value.trim();
+                const name = rawName || (t('player') + ' ' + (i + 1));
                 gameState.playerNames.push(name);
+                // Save the raw input (not the fallback) so empty fields stay empty
+                namesToSave.push(rawName);
             }
+            // Persist names to sessionStorage for future games
+            sessionStorage.setItem('impostorPlayerNames', JSON.stringify(namesToSave));
 
             // Select category
             let selectedCategory = gameState.category;
